@@ -1,0 +1,68 @@
+---
+version: "3.9"
+
+services:
+
+  app:
+    platform: linux/x86_64
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    command: sh -c "bin/rails s -p 8080 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - bundle_data:/usr/local/bundle
+    ports:
+      - "8080:8080"
+    env_file:
+      - .docker_compose_env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      redis_attack:
+        condition: service_healthy
+
+  db:
+    image: postgres:12
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: meli
+      POSTGRES_USER: meli
+      POSTGRES_DB: meli_proxy
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U meli -d meli_proxy'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:latest
+    restart: always
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping"]
+
+  redis_attack:
+    image: redis:latest
+    restart: always
+    volumes:
+      - redis_attack_data:/data
+    ports:
+      - "6380:6380"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+
+volumes:
+  db_data:
+  redis_data:
+  redis_attack_data:
+  bundle_data:

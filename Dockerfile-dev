@@ -1,0 +1,48 @@
+FROM ruby:3.1.2-alpine
+ENV RAILS_ENV=development
+
+RUN mkdir /app
+WORKDIR /app
+
+RUN apk update && apk upgrade && apk add --no-cache \
+    build-base postgresql-dev tzdata bash \
+    make \
+    less \
+    git \
+    shared-mime-info \
+    binutils-gold gcc \
+    g++ \
+    libstdc++ \
+    libffi-dev \
+    libc-dev \
+    linux-headers \
+    libxml2-dev \
+    libxslt-dev \
+    libgcrypt-dev \
+    netcat-openbsd \
+    openssl \
+    pkgconfig \
+    && rm -rf /var/cache/apk/*
+
+ENV LANG=C.UTF-8 \
+  BUNDLE_JOBS=4 \
+  BUNDLE_RETRY=3
+
+COPY Gemfile ./Gemfile
+COPY Gemfile.lock ./Gemfile.lock
+
+
+#RUN bundle configure
+RUN bundle install
+
+COPY . /app
+
+# Prepare entrypoints
+RUN ["chmod", "+x", "./entrypoints/entrypoint.sh"]
+COPY ./entrypoints/entrypoint.sh /usr/bin/
+RUN ["chmod", "+x", "/usr/bin/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
+
+EXPOSE 8080
+
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
