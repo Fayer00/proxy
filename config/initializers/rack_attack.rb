@@ -2,17 +2,13 @@
 class Rack::Attack
   Rack::Attack.enabled = ENV['ENABLE_RACK_ATTACK'] || Rails.env.production?
 
-  Rack::Attack.cache.store = Redis.new(host: ENV["REDIS_FOR_RACK_ATTACK_HOST"], port: ENV["REDIS_FOR_RACK_ATTACK_PORT"]) if ENV['REDIS_FOR_RACK_ATTACK_HOST'] && ENV["REDIS_FOR_RACK_ATTACK_PORT"]
+  Rack::Attack.cache.store = Redis.new(host: ENV["REDIS_HOST"], port: ENV["REDIS_PORT"]) if ENV['REDIS_HOST'] && ENV["REDIS_PORT"]
 
   # Trying to limit by 1 request per minute by ip, change later to more lax throttle
   throttle("req/ip/proxy-tries", limit: 10, period: 1.minute) do |req|
     req.ip if req.path.include?('/categories') && req.get?
   end
 
-  # limit enpoint to a number of request per minute
-  throttle("expensive-endpoint/categories", limit: 10, period: 5.minute) do |req|
-      "gets-endpoint" if req.path.include?('/categories') && req.get?
-  end
 
   # track hits to "categories" path
   track("categories") do |req|

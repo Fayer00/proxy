@@ -53,5 +53,6 @@ end
 
 group :test do
   gem "shoulda-matchers"
+  gem 'rack-test', require: 'rack/test'
 end
 

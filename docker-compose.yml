@@ -51,18 +51,7 @@ services:
     healthcheck:
       test: [ "CMD", "redis-cli", "ping"]
 
-  redis_attack:
-    image: redis:latest
-    restart: always
-    volumes:
-      - redis_attack_data:/data
-    ports:
-      - "6380:6380"
-    healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
-
 volumes:
   db_data:
   redis_data:
-  redis_attack_data:
   bundle_data:

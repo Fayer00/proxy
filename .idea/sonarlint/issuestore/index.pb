@@ -7,9 +7,6 @@
 db/seeds.rb,8\1\816631bad3665c05f73dd7befe12c619677d6d62
 9
 	bin/setup,3\f\3f490f8da820b05ec772996143c1dd5b3498f750
-:
-
-bin/bundle,8\d\8d6a126d12d5381c7693c27cad5d2eca28213623
 8
 bin/rake,9\8\98ec6b99e0df7756ff15a3790b0bd9dd022a92ad
 E
@@ -38,14 +35,8 @@ P
 lib/tasks/.keep,8\6\8614ecca13b70634e65eefb4a870046014b72ba7
 E
 config/locales/en.yml,2\e\2e828e23e47c79dd8cad0f080376db81e82d3588
-R
-"config/environments/development.rb,e\5\e54c3d8d363f5b004526c7fcab8f8eb31da5a209
 K
 config/initializers/cors.rb,1\0\109c73e4c63ca6f27117eb553180df33f54afc89
-K
-config/environments/test.rb,f\5\f52903eb564521c5ab86ad6edd6582a3b5f15b2f
-Q
-!config/environments/production.rb,4\a\4a310e0d78d1faa88d49084f8149abd3441b1f25
 Q
 !app/views/layouts/mailer.html.erb,5\7\5791af0ec7101c9506acc0ad66c5becffb57bcf2
 _
@@ -69,12 +60,6 @@ J
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 9
 	bin/rails,b\3\b3ccab2c507ca3350b2f47e1ac22bf593b2b912e
-C
-.docker_compose_env,7\b\7bcc2dd85c3c8e5086fc263e49aa962113be7e87
-B
-docker-compose.yml,3\5\35b8c13cf2eb2a194eada000eb310d65aed53b2a
->
-Dockerfile-dev,5\a\5a9dca8a90d1c390643f24fa7587fb05b3f9f081
 >
 .gitattributes,2\4\24139dae656713ba861751fb2c2ac38839349a7a
 I
@@ -83,8 +68,6 @@ I
 .envrc,a\2\a290632bbcae192e53c54337b3238d835c97e8a9
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-E
-config/application.rb,7\f\7ff7049c1c8745b54f0a9ef78996f60b38f36268
 Q
 !app/views/layouts/mailer.text.erb,2\c\2c761add2e75b8929fac974ce0d883422cfbfac8
 C
@@ -93,3 +76,13 @@ R
 "config/initializers/inflections.rb,9\a\9ae0bf0fcd1615b43115ab08d1c38e27c02e182d
 B
 config/storage.yml,9\8\98fb829828f5d6f179e3be17f70e2491a1b76852
+4
+.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+Y
+)app/controllers/application_controller.rb,7\d\7dc0dd94f601e507e2a20bad6adcf12a51caa380
+`
+0db/migrate/20230209200442_create_api_requests.rb,1\f\1fa9161381fea4fd57a03b8e2373e84abd8ffbbd
+<
+db/schema.rb,2\c\2cda0c6171fa7d04989507a1dd112e34c40df46d
+C
+spec/spec_helper.rb,6\0\60fdfdbae843d7e48fd48bfe0f581e60b714bd8c
