@@ -80,9 +80,5 @@ B
 .env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 Y
 )app/controllers/application_controller.rb,7\d\7dc0dd94f601e507e2a20bad6adcf12a51caa380
-`
-0db/migrate/20230209200442_create_api_requests.rb,1\f\1fa9161381fea4fd57a03b8e2373e84abd8ffbbd
-<
-db/schema.rb,2\c\2cda0c6171fa7d04989507a1dd112e34c40df46d
 C
 spec/spec_helper.rb,6\0\60fdfdbae843d7e48fd48bfe0f581e60b714bd8c

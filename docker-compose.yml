@@ -21,8 +21,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-      redis_attack:
-        condition: service_healthy
 
   db:
     image: postgres:12
